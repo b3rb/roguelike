@@ -1,0 +1,14 @@
+In order for this program to run on windows, it requires libpdcurses.dll
+The source for this is located at https://github.com/wmcbrine/PDCurses
+
+======================
+Building Instructions:
+======================
+$ git clone https://github.com/wmcbrine/PDCurses
+$ cd PDCurses/wincon/
+$ make DLL=Y
+Note: If cross compiling on linux with mingw32, the Makefile will need
+to be edited to include the proper commands.
+$ mv pdcurses.dll libpdcurses.dll
+
+libpdcurses.dll should then be moved to your build directory.
