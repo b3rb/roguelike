@@ -23,21 +23,21 @@ ifeq ($(WIN), Y)
 	@echo -e "Building Windows binary..."
 	@echo -e "==========================\n"
 	@sed -i 's/ncurses.h/pdcurses.h/g' $(SRCDIR)/$(TARGET).h
-	@sed -i 's/main/WinMain/g' $(SRCDIR)/$(TARGET).c
 else
 	@echo -e "\n========================"
 	@echo -e "Building Linux binary..."
 	@echo -e "========================\n"
 	@sed -i 's/pdcurses.h/ncurses.h/g' $(SRCDIR)/$(TARGET).h
-	@sed -i 's/WinMain/main/g' $(SRCDIR)/$(TARGET).c
 endif
 	@echo -e "Build options:"
 	@echo -e "CC = $(CC)"
 	@echo -e "CFLAGS = $(CFLAGS)"
 	@echo -e "LDFLAGS = $(LDFLAGS)\n"
 
+# copies assets to build folder
 	@cp -r assets/ build/
 
+# compiling
 	$(CC) $(CFLAGS) $(SRC) -o $@ $(LDFLAGS)
 	@echo "Done!"
 

@@ -11,7 +11,7 @@ void PrintPlayer(int x, int y);
 void RefreshMap(char map[255][255]);
 bool MovePlayer(int direction, char map[255][255]);
 
-int WinMain(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
 
 	FILE *fp = NULL;
 	char map[255][255]; /* file buffer */
