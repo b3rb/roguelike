@@ -11,11 +11,10 @@ void PrintPlayer(int x, int y);
 void RefreshMap(char map[255][255]);
 bool MovePlayer(int direction, char map[255][255]);
 
-int main(int argc, char *argv[]) {
+int WinMain(int argc, char *argv[]) {
 
 	FILE *fp = NULL;
 	char map[255][255]; /* file buffer */
-	int x, y; /* player coords */
 
 	/* loads files and assigns to buffer */
 	if (!LoadMap(fp, "assets/lvls/map.txt", map)) {
@@ -31,7 +30,7 @@ int main(int argc, char *argv[]) {
 	PrintPlayer(3, 4);
 	refresh();
 
-	/* user input and main gameloop */
+	/* user input and WinMain gameloop */
 	bool quit = false;
 	while(!quit) {
 		char input = getch();
@@ -85,9 +84,10 @@ bool LoadMap(FILE *fp, char path[], char buff[255][255]) {
 		/* saves map to buffer */
 		int lines = 0;
 		while(fgets(buff[lines], 255, fp) != NULL) ++lines;
+
+		/* closes file */
+		fclose(fp);
 	}
-	/* closes file */
-	fclose(fp);
 
 	return success;
 }
