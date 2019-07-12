@@ -1,8 +1,5 @@
 #include "roguelike.h"
 
-#define FLOOR '.'
-#define HALL '#'
-
 enum direction {UP, DOWN, LEFT, RIGHT};
 
 bool LoadMap(FILE *fp, char path[], char buff[255][255]);

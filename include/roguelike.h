@@ -8,7 +8,7 @@
 #define HEIGHT 25
 
 #define FLOOR '.'
-#define FLOOR '#'
+#define HALL '#'
 
 #ifndef _ROGUELIKE_H
 #define _ROGUELIKE_H
