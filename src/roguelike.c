@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
 	PrintPlayer(3, 4);
 	refresh();
 
-	/* user input and WinMain gameloop */
+	/* user input and main gameloop */
 	bool quit = false;
 	while(!quit) {
 		char input = getch();
