@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
 	char map[255][255]; /* file buffer */
 
 	/* loads files and assigns to buffer */
-	if (!LoadMap(fp, "assets/lvls/map.txt", map)) {
+	if (!LoadMap(fp, "assets/lvls/map.lvl", map)) {
 		exit(1);
 	}
 
