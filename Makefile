@@ -2,10 +2,11 @@
 
 CC = gcc
 CFLAGS = -O3 -g -Werror -Wall
-LDFLAGS = -L/usr/lib
+LDFLAGS = -L/usr/lib -Iinclude
 
 SRCDIR = src
-INCLUDE = -Iinclude
+INCDIR = include
+INCLUDE = $(wildcard $(INCDIR)/*.h)
 TARGET = roguelike
 SRC = $(wildcard $(SRCDIR)/*.c)
 OBJS = $(SRC:.c=.o)
@@ -17,7 +18,7 @@ else
 	LDFLAGS += -lm -lncurses
 endif
 
-bin/$(TARGET) :
+bin/$(TARGET): $(SRC) $(INCLUDE)
 # options
 ifeq ($(WIN), Y)
 	@echo -e "\n=========================="
@@ -39,7 +40,7 @@ endif
 	@cp -r assets/ bin/
 
 # compiling
-	$(CC) $(CFLAGS) $(SRC) -o $@ $(LDFLAGS) $(INCLUDE)
+	$(CC) $(CFLAGS) $(SRC) -o $@ $(LDFLAGS)
 	@echo "Done!"
 
 
