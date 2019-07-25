@@ -4,21 +4,16 @@
 
 int main(int argc, char *argv[]) {
 
-	FILE *fp = NULL;
-	char map[255][255]; /* file buffer */
-
-	/* loads files and assigns to buffer */
-	if (!LoadMap(fp, "assets/lvls/map.lvl", map)) {
-		exit(1);
-	}
-
-	/* initialized ncurses */
+	/* initializes ncurses */
 	initscr();
 	noecho();
+
+  /* creates map */
+  Level *map = CreateMap(9, 5);
 	
 	/* prints map and player */
 	PrintMap(map);
-	PrintPlayer(3, 4);
+	PrintPlayer(0, 0);
 	refresh();
 
 	/* user input and main gameloop */

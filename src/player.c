@@ -2,7 +2,7 @@
 #include "player.h"
 
 void PrintPlayer(int x, int y);
-bool MovePlayer(int direction, char map[255][255]);
+bool MovePlayer(int direction, Level *lvl);
 
 void PrintPlayer(int x, int y) {
 
@@ -11,28 +11,36 @@ void PrintPlayer(int x, int y) {
 	move(y, x);
 }
 
-bool MovePlayer(int direction, char map[255][255]) {
+bool MovePlayer(int direction, Level *lvl) {
 
-bool success = true;;
-int x, y;
-getyx(stdscr, y, x); /* gets player coords */
+  bool success = true;
+  int x, y;
+  getyx(stdscr, y, x); /* gets player coords */
 
 	/* detects if movement is possible */
 	switch(direction) {
 		case UP:
-			if (map[y - 1][x] == FLOOR || map[y - 1][x] == HALL) --y;
+      if (y - 1 >= 0) {
+			  if (lvl->map[y - 1][x] == FLOOR) --y;
+      }
 			break;
 
 		case DOWN:
-			if (map[y + 1][x] == FLOOR || map[y + 1][x] == HALL) ++y;
+      if (y + 1 < lvl->h) {
+			  if (lvl->map[y + 1][x] == FLOOR) ++y;
+      }
 			break;
 
 		case LEFT:
-			if (map[y][x - 1] == FLOOR || map[y][x - 1] == HALL) --x;
+      if (x - 1 >= 0) {
+			  if (lvl->map[y][x - 1] == FLOOR) --x;
+      }
 			break;
 
 		case RIGHT:
-			if (map[y][x + 1] == FLOOR || map[y][x + 1] == HALL) ++x;
+      if (x + 1 < lvl->w) {
+			  if (lvl->map[y][x + 1] == FLOOR) ++x;
+      }
 			break;
 
 		default:

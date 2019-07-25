@@ -3,10 +3,15 @@
 #ifndef _MAP_H
 #define _MAP_H
 
-/* loads map from .lvl file */
-bool LoadMap(FILE *fp, char path[], char buff[255][255]);
+typedef struct Level {
+  int w, h;
+  char **map;
+} Level;
+
+/* creates procedurally generated map */
+Level *CreateMap(int width, int height);
 
 /* prints map buffer and returns cursor to player */
-void PrintMap(char map[255][255]);
+void PrintMap(Level *lvl);
 
 #endif
