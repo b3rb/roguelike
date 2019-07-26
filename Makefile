@@ -36,9 +36,6 @@ endif
 	@echo -e "CFLAGS = $(CFLAGS)"
 	@echo -e "LDFLAGS = $(LDFLAGS)\n"
 
-# copies assets to build folder
-	@cp -r assets/ bin/
-
 # compiling
 	$(CC) $(CFLAGS) $(SRC) -o $@ $(LDFLAGS)
 	@echo "Done!"
