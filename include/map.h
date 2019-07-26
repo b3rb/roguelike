@@ -14,4 +14,7 @@ Level *CreateMap(int width, int height);
 /* prints map buffer and returns cursor to player */
 void PrintMap(Level *lvl);
 
+/* frees resources from map array */
+void DestroyMap(Level *lvl);
+
 #endif
