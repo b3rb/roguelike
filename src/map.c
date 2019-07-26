@@ -3,6 +3,7 @@
 
 Level *CreateMap(int width, int height);
 void PrintMap(Level *lvl);
+void DestroyMap(Level *lvl);
 
 Level *CreateMap(int width, int height) {
 
@@ -42,4 +43,12 @@ void PrintMap(Level *lvl) {
 
 	/* restores cursor position */
 	move(y, x);
+}
+
+void DestroyMap(Level *lvl) {
+
+  for (int i = 0; i < lvl->h; i++) {
+    free(lvl->map[i]);
+  }
+  free(lvl->map);
 }

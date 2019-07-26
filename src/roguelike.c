@@ -54,5 +54,9 @@ int main(int argc, char *argv[]) {
 	/* ends ncurses session */
 	endwin();
 
+  /* frees resources */
+  DestroyMap(map);
+  free(map);
+
 	return 0;
 }
