@@ -3,8 +3,6 @@
 #ifndef _PLAYER_H
 #define _PLAYER_H
 
-#include "map.h"
-
 enum direction {UP, DOWN, LEFT, RIGHT};
 
 /* prints player at specified coordinates */

@@ -1,31 +1,17 @@
 #include "roguelike.h"
 #include "map.h"
 
-Level *CreateMap(int width, int height);
+void CreateMap(Level *lvl);
 void PrintMap(Level *lvl);
-void DestroyMap(Level *lvl);
 
-Level *CreateMap(int width, int height) {
-
-  /* allocates memory */
-  Level *lvl = malloc(sizeof(Level));
-  lvl->map = malloc(sizeof(char *) * height);
-  for (int i = 0; i < height; ++i) {
-    lvl->map[i] = malloc(sizeof(char));
-  }
-
-  /* assigns width and height variables */
-  lvl->w = width;
-  lvl->h = height;
+void CreateMap(Level *lvl) {
 
   /* procedurally generates map */
-  for (int y = 0; y < height; y++) {
-    for (int x = 0; x < width; x++) {
+  for (int y = 0; y < lvl->h; y++) {
+    for (int x = 0; x < lvl->w; x++) {
       lvl->map[y][x] = '.';
     }
   }
-
-  return lvl;
 }
 
 void PrintMap(Level *lvl) {
@@ -43,12 +29,4 @@ void PrintMap(Level *lvl) {
 
 	/* restores cursor position */
 	move(y, x);
-}
-
-void DestroyMap(Level *lvl) {
-
-  for (int i = 0; i < lvl->h; i++) {
-    free(lvl->map[i]);
-  }
-  free(lvl->map);
 }

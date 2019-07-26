@@ -6,15 +6,16 @@
 #include <stdbool.h>
 #include <string.h>
 
-#define WIDTH 25
-#define HEIGHT 25
-
 #define FLOOR '.'
-#define HALL '#'
 
 #ifndef _ROGUELIKE_H
 #define _ROGUELIKE_H
 
-/* nothing here yet */
+typedef struct Level {
+  int w, h;
+  char **map;
+} Level;
+
+Level *CreateLevel(int width, int height);
 
 #endif

@@ -2,6 +2,9 @@
 #include "map.h"
 #include "player.h"
 
+Level *CreateLevel(int width, int height);
+static void DestroyLevel(Level *lvl);
+
 int main(int argc, char *argv[]) {
 
 	/* initializes ncurses */
@@ -9,7 +12,8 @@ int main(int argc, char *argv[]) {
 	noecho();
 
   /* creates map */
-  Level *map = CreateMap(9, 5);
+  Level *map = CreateLevel(9, 5);
+  CreateMap(map);
 	
 	/* prints map and player */
 	PrintMap(map);
@@ -55,8 +59,37 @@ int main(int argc, char *argv[]) {
 	endwin();
 
   /* frees resources */
-  DestroyMap(map);
-  free(map);
+  DestroyLevel(map);
 
 	return 0;
+}
+
+Level *CreateLevel(const int width, const int height) {
+
+  /* allocates memory for level */
+  Level *lvl = malloc(sizeof(Level));
+
+  /* allocates memory for map */
+  lvl->map = malloc(sizeof(char *) * height);
+  for (int i = 0; i < height; i++) {
+    lvl->map[i] = malloc(sizeof(char) * width);
+  }
+
+  /* assigns width and height variables */
+  lvl->w = width;
+  lvl->h = height;
+
+  return lvl;
+}
+
+static void DestroyLevel(Level *lvl) {
+
+  /* frees resources for map */
+  for (int i = 0; i < lvl->h; i++) {
+    free(lvl->map[i]);
+  }
+  free(lvl->map);
+
+  /* frees resources for level */
+  free(lvl);
 }
