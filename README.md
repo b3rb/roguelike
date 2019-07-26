@@ -7,9 +7,8 @@
 * To compile for Windows, run 'make WIN=Y' instead of the standard 'make' command.
 
 ## Levels:
-* Levels are currently plain text files containing the map.
-* the '.' and '#' characters are passable by the player and everything else is solid.
-* When designing levels, tabs should not be used as they can be inconsistent depending on the user's terminal settings.
+* Levels are procedurally generated and stored in an array.
+* the '.' character is passable by the player and everything else is solid.
 
 ## Contributing:
 * Follow the coding style present throughout this program.
