@@ -1,3 +1,5 @@
+/* map.c */
+
 #include "roguelike.h"
 #include "map.h"
 

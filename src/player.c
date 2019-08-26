@@ -1,3 +1,5 @@
+/* player.c */
+
 #include "roguelike.h"
 #include "player.h"
 
